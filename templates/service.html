@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Book Your Care Service</title>
+  <style>
+    /* NAVBAR */
+.top-navbar {
+  background-color: #eef2f4;
+  width: 100%;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #2563eb;
+}
+#map {
+  height: 300px;
+  width: 100%;
+  border-radius: 12px;
+}
+    /* Main Card */
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .title {
+      grid-column: span 2;
+      text-align: center;
+    }
+
+    .title h1 {
+      margin-bottom: 5px;
+      color: #2f6fb1;
+    }
+
+    .title p {
+      color: #777;
+    }
+
+
+    /* Form */
+    /* FORM */
+.form h3 {
+    margin-bottom: 10px;
+    color: #444;
+}
+
+/* BUTTON GROUP */
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* OPTION BUTTON */
+.btn {
+    flex: 1;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #d0d7e2;
+    background: #f7f9fc;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+/* HOVER EFFECT */
+.btn:hover {
+    background: #2f6fb1;
+    color: white;
+    border-color: #2f6fb1;
+}
+
+/* SELECTED BUTTON (IMPORTANT) */
+input[type="radio"]:checked + .btn {
+    background: #2f6fb1;
+    color: white;
+    border-color: #2f6fb1;
+}
+
+/* INPUT FIELDS */
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #d0d7e2;
+    font-size: 14px;
+}
+
+/* CONFIRM BUTTON */
+.confirm-btn {
+    width: 100%;
+    padding: 12px;
+    background: #2f6fb1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.confirm-btn:hover {
+    background: #245a8d;
+}
+
+/* NOTE TEXT (OPTIONAL) */
+.note {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #777;
+    text-align: center;
+}
+  </style>
+</head>
+<body>
+      <nav class="top-navbar">
+  <div class="nav-container">
+    <div class="nav-logo">🐾 Paws & Petal Care</div>
+
+    <ul class="nav-links">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'register' %}">Booking</a></li>
+      <li><a href="{% url 'plan' %}">Packages</a></li>
+      <li><a href="{% url 'service' %}">Services</a></li>
+      <li><a href="{% url 'care' %}">Furry-Care</a></li>
+      <li><a href="">Feedback</a></li>
+    </ul>
+  </div>
+</nav>
+    
+<div class="container">
+  <div class="title">
+    <h1>Book Your Care Service</h1>
+    <p>Your caretaker is just around the corner!</p>
+  </div>
+
+  <!-- Map Section -->
+  <!-- Map Section -->
+<!--div id="map" style="width:100%; height:300px; border-radius:12px; margin-bottom:20px;"></div-->
+<!--script>
+function initMap() {
+  const location = { lat: 28.6139, lng: 77.2090 }; // Delhi
+
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 13,
+    center: location,
+  });
+
+  new google.maps.Marker({
+    position: location,
+    map: map,
+  });
+}
+</script-->
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3492.0095155667486!2d77.6393727!3d28.927767699999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390c614f846e713f%3A0xdf29c5d5329144f0!2sMeerut%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1758175292340!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxxxxxxxxxxxx&callback=initMap">
+</script>
+
+  <!-- Form Section -->
+  <!-- Form Section -->
+<form method="POST" action="{% url 'service' %}">
+    {% csrf_token %}
+
+    <!-- SERVICE TYPE -->
+    <h3>Select Service Type</h3>
+    <div class="btn-group">
+        <input type="radio" id="pet" name="service_type" value="pet" hidden required>
+        <label for="pet" class="btn">Pet Care</label>
+
+        <input type="radio" id="plant" name="service_type" value="plant" hidden>
+        <label for="plant" class="btn">Plant Care</label>
+    </div>
+
+    <!-- DURATION -->
+    <h3>Choose Duration</h3>
+    <div class="btn-group">
+        <input type="radio" id="day" name="duration" value="1_day" hidden required>
+        <label for="day" class="btn">1 Day</label>
+
+        <input type="radio" id="week" name="duration" value="1_week" hidden>
+        <label for="week" class="btn">1 Week</label>
+
+        <input type="radio" id="month" name="duration" value="1_month" hidden>
+        <label for="month" class="btn">1 Month</label>
+    </div>
+
+    <!-- LOCATION -->
+    <h3>Pickup or Drop Location</h3>
+    <input type="text" name="location" placeholder="Caretaker Name" required>
+
+    <!-- DATE -->
+    <h3>Choose Start Date</h3>
+    <input type="date" name="start_date" required>
+
+    <!-- SUBMIT -->
+    <button type="submit" class="confirm-btn">
+        Confirm Booking
+    </button>
+</form>
+
+  <button type="submit">
+    Confirm Booking
+</button>
+
+<script>
+function confirmBooking() {
+    alert("Booking submitted successfully!");
+}
+</script>
+  <!--p class="note">
+    After confirmation, you'll receive a QR code for caretaker verification.
+  </p-->
+
+</div>
+</body>
+</html>

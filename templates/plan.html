@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Care Plan Selection</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <style>
+    .simple-navbar {
+  background-color: #eef2f4;   /* same as image */
+  padding: 14px 0;
+}
+
+.simple-navbar .navbar-brand {
+  font-size: 18px;
+  color: #1f2937;
+}
+
+.simple-navbar .nav-link {
+  color: #374151;
+  font-weight: 500;
+  margin-left: 20px;
+}
+
+.simple-navbar .nav-link:hover {
+  color: #2563eb;
+}
+.custom-link {
+  color: #2f6fb1;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.custom-link:hover {
+  color: #245a90;
+}
+
+  </style>
+</head>
+<body>
+   <nav class="navbar navbar-expand-lg simple-navbar">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">
+      🐾 Paws & Petal Care
+    </a>
+
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Booking</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'plan' %}">Packages</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'care' %}">Furry-Care</a></li>
+      <li class="nav-item"><a class="nav-link" href="">Feedback</a></li>
+    </ul>
+  </div>
+</nav>
+  
+
+    <!--div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link text-light nav-hover" href="">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-light nav-hover" href="{% url 'register' %}">Booking</a></li>
+         <li class="nav-item"><a class="nav-link text-light nav-hover" href="{% url 'plan' %}">package</a></li>
+          <li class="nav-item"><a class="nav-link text-light nav-hover" href="#"> Services</a></li>
+          <li class="nav-item"><a class="nav-link text-light nav-hover" href="#">Furry-care</a></li>
+          <li class="nav-item"><a class="nav-link text-light nav-hover" href="#">Feedback</a></li>
+          
+        </ul>
+      </div-->
+
+  <div class="container py-5">
+    <h2 class="text-center mb-3">Choose the Perfect Care Plan</h2>
+    <p class="text-center text-muted mb-5">Flexible, affordable, and full of love — for every paw and petal.</p>
+
+    <div class="row g-4">
+      <!-- Basic Care -->
+      <form method="POST" action="{% url 'booking' %}">
+  {% csrf_token %}
+
+  <input type="hidden" name="plan_name" value="Basic Care">
+  <input type="hidden" name="price" value="500/day">
+
+  <button type="submit" class="btn btn-outline-primary book-btn">
+    Book Now
+  </button>
+</form>
+
+      <!-- Scavo Care -->
+      <form method="POST" action="{% url 'booking' %}">
+  {% csrf_token %}
+
+  <input type="hidden" name="plan_name" value="Scavo Care">
+  <input type="hidden" name="price" value="200/day">
+
+  <button class="btn btn-outline-success book-btn" type="submit">
+    Book Now
+  </button>
+</form>
+      <!-- Premium Care -->
+      <form method="POST" action="{% url 'booking' %}">
+  {% csrf_token %}
+
+  <input type="hidden" name="plan_name" value="Premium Care">
+  <input type="hidden" name="price" value="9000/month">
+
+  <button class="btn btn-outline-danger book-btn" type="submit">
+    Book Now
+  </button>
+</form>
+      <!-- Premium Bloom -->
+      <form method="POST" action="{% url 'booking' %}">
+  {% csrf_token %}
+
+  <input type="hidden" name="plan_name" value="Premium Bloom">
+  <input type="hidden" name="price" value="4000/month">
+
+  <button class="btn btn-outline-warning book-btn" type="submit">
+    
+  </button>
+</form>
+   <form method="POST" action="{% url 'booking' %}">
+  {% csrf_token %}
+  <input type="hidden" name="plan_name" value="Premium Care">
+  <input type="hidden" name="price" value="9000/month">
+
+  <button type="submit" class="btn btn-outline-danger book-btn">
+    Book Now
+  </button>
+</form>
+
+  <script src="script.js"></script>
+  {% if messages %}
+  <script>
+    {% for message in messages %}
+      alert("{{ message }}");
+    {% endfor %}
+  </script>
+{% endif %}
+</body>
+</html>

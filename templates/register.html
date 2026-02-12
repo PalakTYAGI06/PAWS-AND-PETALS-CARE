@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paws & Petal Care</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  <style>
+    .custom-navbar {
+  background-color: #eef2f4;   /* same as image */
+  padding: 14px 0;
+}
+
+.custom-navbar .navbar-brand {
+  font-size: 20px;
+  color: #222;
+}
+
+.custom-navbar .nav-link {
+  color: #333;
+  font-weight: 500;
+  margin-left: 18px;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #2f6fb1;
+}
+.btn-primary {
+  background-color: #2f6fb1;
+  border-color: #2f6fb1;
+}
+
+.btn-primary:hover {
+  background-color: #245a90;
+}
+.custom-link {
+  color: #2f6fb1;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.custom-link:hover {
+  color: #245a90;
+}
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg custom-navbar">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">
+      🐾 Paws & Petal Care
+    </a>
+
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'home' %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">Booking</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'plan' %}">Packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'service' %}">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'care' %}">Furry-Care</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'feedback' %}">Feedback</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+  <div class="container my-5">
+    <div class="row shadow-lg rounded-4 overflow-hidden">
+      <!-- Login Section -->
+      <div class="col-md-6 login-section p-5">
+        <div class="login-card bg-white p-4 h-100">
+          <h2 class="fw-bold text-primary">Welcome Back!</h2>
+          <p class="text-muted">Login to continue caring for pets and plants.</p>
+
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} py-2">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+
+          <form method="POST" action="{% url 'live.login' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="username" class="form-label">Email or Username</label>
+              <input type="text" class="form-control" id="username" name="username" required />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" name="password" required />
+            </div>
+            <div class="mb-3 text-end">
+              <a href="#" class="text-decoration-none">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Log In</button>
+          </form>
+
+          <div class="mt-3 text-center">
+            New here? <a href="{% url 'register' %}" class="custom-link">Create an account →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Registration Section -->
+      <div class="col-md-6 register-section p-5 bg-white">
+        <h2>Join Paws & Petal Care!</h2>
+        <p>Create your account to start your care journey.</p>
+        <form method="POST" action="{% url 'register' %}">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullName" name="full_name" required />
+          </div>
+          <div class="mb-3">
+            <label for="registerEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="registerEmail" name="email" required />
+          </div>
+          <div class="mb-3">
+            <label for="registerPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="registerPassword" name="password1" required />
+          </div>
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPassword" name="password2" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Select Role:</label><br />
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="role" value="owner" required />
+              <label class="form-check-label">Pet Owner</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="role" value="caretaker" required />
+              <label class="form-check-label">Caretaker</label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Create Account</button><a>
+        </form>
+        <p class="mt-3">Already have an account? <a href="#" class="custom-link">Login →</a></p>
+      </div>
+    </div>
+  </div>
+   
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'js/scripts.js' %}"></script>
+  {% if messages %}
+  <script>
+    {% for message in messages %}
+      alert("{{ message }}");
+    {% endfor %}
+  </script>
+{% endif %}
+</body>
+</html>

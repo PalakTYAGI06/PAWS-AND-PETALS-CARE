@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #f4f8fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.feedback-container {
+    width: 900px;
+    display: flex;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* Left Side */
+.feedback-form {
+    width: 55%;
+    padding: 30px;
+}
+
+.feedback-form h2 {
+    color: #1f3c88;
+    margin-bottom: 5px;
+}
+
+.feedback-form span {
+    color: #2f80ed;
+}
+
+.sub-text {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.stars {
+    color: #f4c430;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: 500;
+}
+
+textarea {
+    width: 100%;
+    height: 90px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    outline: none;
+}
+
+select, input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+}
+
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background-color: #2f80ed;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1f6fd6;
+}
+
+/* Right Side */
+.thank-you {
+    width: 45%;
+    background-color: #f1f6ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.thank-you h3 {
+    color: #1f3c88;
+    margin-bottom: 15px;
+}
+
+.thank-you img {
+    width: 180px;
+    margin: 15px 0;
+}
+
+.thank-you p {
+    color: #4b5563;
+    font-size: 14px;
+}
+/*img*/
+.label-with-img {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    margin: 10px 0 5px;
+}
+
+.label-with-img img {
+    width: 18px;
+    height: 18px;
+}
+
+
+
+/* ⭐ Star Rating CSS */
+.star-rating {
+    font-size: 26px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.star {
+    color: #d1d5db;   /* empty star color */
+    transition: color 0.2s ease;
+}
+
+.star.active {
+    color: #f4c430;   /* filled star (yellow) */
+}

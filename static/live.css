@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Layout */
+.layout {
+    display: flex;
+    min-height: 100vh;
+    background: #f4f6f8;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background: #ffffff;
+    box-shadow: 2px 0 6px rgba(0,0,0,0.08);
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+}
+
+/* Brand */
+.brand {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2b4c7e;
+    margin-bottom: 30px;
+}
+
+/* Menu */
+.menu {
+    list-style: none;
+}
+
+.menu li {
+    margin-bottom: 18px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+    display: block;
+    padding: 8px 10px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.menu li a:hover {
+    background: #e8f0ff;
+    color: #2b4c7e;
+}
+
+/* Main content */
+.content {
+    margin-left: 220px;   /* 👈 sidebar width ke barabar */
+    padding: 25px;
+    width: calc(100% - 220px);
+}
+/*main content*/
+
+body {
+    background-color: #f4f8fc;
+    font-family: 'Segoe UI', sans-serif;
+}
+.live-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.page-title {
+    text-align: center;
+    color: #1f3c88;
+}
+
+.page-subtitle {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+.live-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+/* Cards */
+.camera-card,
+.info-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.camera-box {
+    height: 260px;
+    background: #1f2937;
+    border-radius: 10px;
+    margin: 15px 0;
+    position: relative;     /* IMPORTANT */
+    z-index: 1; 
+    overflow:hidden;
+}
+
+/* Buttons */
+.controls {
+    display: flex;
+    gap: 10px;
+    position: relative;
+    z-index: 10;  
+    
+
+}
+.camera-controls {
+    display: flex;
+    gap: 10px;
+
+}
+
+.btn {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn.primary {
+    background: #2f80ed;
+    color: #fff;
+}
+
+.btn.danger {
+    background: #f87171;
+    color: #fff;
+}
+
+.btn.light {
+    background: #e5efff;
+    color: #1f3c88;
+    width: 100%;
+    margin-top: 15px;
+}

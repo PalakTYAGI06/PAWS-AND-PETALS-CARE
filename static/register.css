@@ -1,0 +1,21 @@
+.login-section {
+  background: linear-gradient(135deg, #3c6e71, #1e3d3f); /* deeper tones */
+  color: #c4d9ee; /* soft off-white */
+}
+
+.register-section h2 {
+  color: #3c6e71;
+}
+
+.register-section p {
+  color: #555;
+}
+
+.navbar-brand {
+  color: #3c6e71 !important;
+}
+.login-section h2,
+.login-section p,
+.login-section label {
+  color: #80a0b5;
+}

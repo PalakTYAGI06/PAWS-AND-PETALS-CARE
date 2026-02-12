@@ -1,0 +1,252 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paws & Petal Feedback</title>
+    <link rel="stylesheet" href="{% static 'feedback.css' %}">
+    <style>
+       * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #f4f8fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.feedback-container {
+    width: 900px;
+    display: flex;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* Left Side */
+.feedback-form {
+    width: 55%;
+    padding: 30px;
+}
+
+.feedback-form h2 {
+    color: #1f3c88;
+    margin-bottom: 5px;
+}
+
+.feedback-form span {
+    color: #2f80ed;
+}
+
+.sub-text {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.stars {
+    color: #f4c430;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: 500;
+}
+
+textarea {
+    width: 100%;
+    height: 90px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    outline: none;
+}
+
+select, input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+}
+
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background-color: #2f80ed;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1f6fd6;
+}
+
+/* Right Side */
+.thank-you {
+    width: 45%;
+    background-color: #f1f6ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.thank-you h3 {
+    color: #1f3c88;
+    margin-bottom: 15px;
+}
+
+.thank-you img {
+    width: 180px;
+    margin: 15px 0;
+}
+
+.thank-you p {
+    color: #4b5563;
+    font-size: 14px;
+}
+/*img*/
+.label-with-img {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    margin: 10px 0 5px;
+}
+
+.label-with-img img {
+    width: 18px;
+    height: 18px;
+}
+
+
+
+/* ⭐ Star Rating CSS */
+.star-rating {
+    font-size: 26px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.star {
+    color: #d1d5db;   /* empty star color */
+    transition: color 0.2s ease;
+}
+
+.star.active {
+    color: #f4c430;   /* filled star (yellow) */
+} 
+    </style>
+</head>
+<body>
+
+<div class="feedback-container">
+
+    <!-- Left Section -->
+    <div class="feedback-form">
+        <h2>Share Your Experience with <span>Paws & Petal Care</span></h2>
+        <p class="sub-text">Your feedback helps us grow and care better – for every paw and petal.</p>
+
+        <div class="stars">
+            <div class="star-rating">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+
+            <input type="hidden" id="rating">
+
+        </div>
+        <form method="post">
+        {% csrf_token %}
+        <div class="form-row">
+            <label for="name">Your Name:</label>
+            <input type="text" name="name" required>
+        </div>
+        <div class="form-row">
+            <label for="email">Email:</label>
+            <input type="email" name="email" required>
+        </div>
+        <div class="form-row">
+            <label for="message">Message:</label>
+            <textarea name="message" rows="4" required></textarea>
+        </div>
+
+
+
+
+
+
+        <label>Your Experience</label>
+        <textarea placeholder="Tell us about your experience..."></textarea>
+
+        <label>Category</label>
+        <select>
+            <option>Pet Care</option>
+            <option>Grooming</option>
+            <option>Veterinary</option>
+        </select>
+
+        <label class="label-with-img">
+                Upload Photo (optional)
+                <img src="C:\Users\RIYA VERMA\Downloads\dog.jpg" alt="upload icon">
+            </label>
+
+            
+        <input type="file">
+
+        <button>Submit Feedback</button>
+    </div>
+
+
+    <script>
+    const stars = document.querySelectorAll('.star');
+    const ratingInput = document.getElementById('rating');
+
+    stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+            const rating = index + 1;
+            ratingInput.value = rating;
+
+            stars.forEach((s, i) => {
+                if (i < rating) {
+                    s.classList.add('active');
+                } else {
+                    s.classList.remove('active');
+                }
+            });
+        });
+    });
+</script>
+
+
+    <!-- Right Section -->
+    <div class="thank-you">
+        <h3>Thank you for your valuable feedback!</h3>
+        <img src="dog.png" alt="Dog Image">
+        <p>We appreciate your trust and time 💙</p>
+    </div>
+
+</div>
+
+</body>
+</html>
